@@ -12,8 +12,8 @@
 	<groupId>com.CleanItAg</groupId>
 	<artifactId>CleanItAgDemoProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>CleanItAgDemoProject</name>
-	<description>Demo project Backend</description>
+	<name>CleanIt</name>
+	<description>CleanIt Backend</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
