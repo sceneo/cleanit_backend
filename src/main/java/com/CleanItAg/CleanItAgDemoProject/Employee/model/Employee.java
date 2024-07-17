@@ -1,4 +1,4 @@
-package com.CleanItAg.CleanItAgDemoProject.Employee;
+package com.CleanItAg.CleanItAgDemoProject.Employee.model;
 
 import java.util.ArrayList;
 import java.util.Collection;

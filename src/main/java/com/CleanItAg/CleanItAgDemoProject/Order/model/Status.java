@@ -1,12 +1,11 @@
-package com.CleanItAg.CleanItAgDemoProject.Order;
+package com.CleanItAg.CleanItAgDemoProject.Order.model;
 
 import java.time.LocalDateTime;
 
-import com.CleanItAg.CleanItAgDemoProject.Employee.Employee;
+import com.CleanItAg.CleanItAgDemoProject.Employee.model.Employee;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 
 @Embeddable
 public class Status {
@@ -22,7 +21,6 @@ public class Status {
 
 	public Status() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Status(Employee issuer, statusState status, LocalDateTime dateIssued) {

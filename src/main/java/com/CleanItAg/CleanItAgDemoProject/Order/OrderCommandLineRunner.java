@@ -27,8 +27,8 @@ public class OrderCommandLineRunner implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception{
-		orderRepository.save(new OrderBean(employeeRepository.findById((long) 1).get(), "Suit and Shoes 1", LocalDateTime.now().plusDays(2), customerRepository.findById(1).get()));
-		orderRepository.save(new OrderBean(employeeRepository.findById((long) 1).get(), "Suit and Shoes 2", LocalDateTime.now().plusDays(4), customerRepository.findById(2).get()));
-		orderRepository.save(new OrderBean(employeeRepository.findById((long) 1).get(), "Suit and Shoes 3", LocalDateTime.now().plusDays(6), customerRepository.findById(3).get()));
+		orderRepository.save(new OrderService(employeeRepository.findById((long) 1).get(), "Suit and Shoes 1", LocalDateTime.now().plusDays(2), customerRepository.findById(1).get()));
+		orderRepository.save(new OrderService(employeeRepository.findById((long) 1).get(), "Suit and Shoes 2", LocalDateTime.now().plusDays(4), customerRepository.findById(2).get()));
+		orderRepository.save(new OrderService(employeeRepository.findById((long) 1).get(), "Suit and Shoes 3", LocalDateTime.now().plusDays(6), customerRepository.findById(3).get()));
 	}
 }

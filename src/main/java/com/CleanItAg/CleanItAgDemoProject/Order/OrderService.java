@@ -5,22 +5,20 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.CleanItAg.CleanItAgDemoProject.Customer.Customer;
-import com.CleanItAg.CleanItAgDemoProject.Employee.Employee;
-import com.CleanItAg.CleanItAgDemoProject.Order.Status.statusState;
+import com.CleanItAg.CleanItAgDemoProject.Customer.model.Customer;
+import com.CleanItAg.CleanItAgDemoProject.Employee.model.Employee;
+import com.CleanItAg.CleanItAgDemoProject.Order.model.Status;
+import com.CleanItAg.CleanItAgDemoProject.Order.model.Status.statusState;
 
-import jakarta.persistence.CollectionTable;
 import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 
 @Entity
-public class OrderBean {
+public class OrderService {
 
 	@Id
 	@GeneratedValue
@@ -38,12 +36,12 @@ public class OrderBean {
 	private String description;
 
 	
-	public OrderBean() {
+	public OrderService() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public OrderBean(Employee issuer, String description, LocalDateTime duedate, Customer customer) {
+	public OrderService(Employee issuer, String description, LocalDateTime duedate, Customer customer) {
 		super();
 		this.creationdate = LocalDateTime.now();
 		this.duedate = duedate;

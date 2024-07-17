@@ -1,13 +1,13 @@
 package com.CleanItAg.CleanItAgDemoProject.Employee;
 
 
+import com.CleanItAg.CleanItAgDemoProject.Employee.model.Employee;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.CleanItAg.CleanItAgDemoProject.Employee.Employee.Role;
-import com.CleanItAg.CleanItAgDemoProject.Person.Person;
+import com.CleanItAg.CleanItAgDemoProject.Employee.model.Employee.Role;
 
 @Component
 @Order(1)

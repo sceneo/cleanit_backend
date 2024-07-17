@@ -1,9 +1,9 @@
-package com.CleanItAg.CleanItAgDemoProject.Order;
+package com.CleanItAg.CleanItAgDemoProject.Order.model;
 
-import com.CleanItAg.CleanItAgDemoProject.Order.Status.statusState;
+import com.CleanItAg.CleanItAgDemoProject.Order.model.Status.statusState;
 
 public class OrderChangeRequest {
-	private statusState newStatus;
+	private final statusState newStatus;
 
 	
 	public OrderChangeRequest(statusState newStatus, int issuerId) {

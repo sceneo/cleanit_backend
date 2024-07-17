@@ -2,12 +2,9 @@ package com.CleanItAg.CleanItAgDemoProject.Order;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Optional;
 
-import org.apache.catalina.connector.Response;
-import org.springframework.data.jpa.repository.query.KeysetScrollDelegate.QueryStrategy;
-import org.springframework.http.ResponseEntity;
+import com.CleanItAg.CleanItAgDemoProject.Order.model.SearchQuery;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +14,6 @@ public class QueryService {
 	
 	public QueryService() {
 		super();
-		
 	}
 	
 	// Using this method as a proxy to initialize response.
@@ -39,12 +35,11 @@ public class QueryService {
 		int whitespace = querystr.lastIndexOf(" ", indexColon);
 		String key=querystr.substring(whitespace+1, indexColon).strip().toLowerCase();
 		String value=querystr.substring(indexColon+1).strip();
-		
-		switch(key) {
-			case "e":
-				if(response.get(queryKeys.customerEmail).isEmpty())response.put(queryKeys.customerEmail, Optional.of(value));
-				break;
-		}
+
+        if (key.equals("e")) {
+            if (response.get(queryKeys.customerEmail).isEmpty())
+                response.put(queryKeys.customerEmail, Optional.of(value));
+        }
 		
 		
 		if (whitespace < 0)querystr="";

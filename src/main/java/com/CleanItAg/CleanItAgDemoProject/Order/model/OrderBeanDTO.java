@@ -1,9 +1,9 @@
-package com.CleanItAg.CleanItAgDemoProject.Order;
+package com.CleanItAg.CleanItAgDemoProject.Order.model;
 
 import java.time.LocalDateTime;
 
-import com.CleanItAg.CleanItAgDemoProject.Customer.Customer;
-import com.CleanItAg.CleanItAgDemoProject.Order.Status.statusState;
+import com.CleanItAg.CleanItAgDemoProject.Customer.model.Customer;
+import com.CleanItAg.CleanItAgDemoProject.Order.model.Status.statusState;
 
 public interface OrderBeanDTO {
 	public long getId();

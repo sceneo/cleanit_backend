@@ -1,11 +1,10 @@
-package com.CleanItAg.CleanItAgDemoProject.Order;
+package com.CleanItAg.CleanItAgDemoProject.Order.model;
 
 public class SearchQuery {
 	private String query;
 
 	public SearchQuery() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public SearchQuery(String query) {

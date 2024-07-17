@@ -3,6 +3,7 @@ package com.CleanItAg.CleanItAgDemoProject.Employee;
 import java.util.List;
 import java.util.Optional;
 
+import com.CleanItAg.CleanItAgDemoProject.Employee.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

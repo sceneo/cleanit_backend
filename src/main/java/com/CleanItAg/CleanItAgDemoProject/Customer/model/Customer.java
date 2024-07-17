@@ -1,4 +1,4 @@
-package com.CleanItAg.CleanItAgDemoProject.Customer;
+package com.CleanItAg.CleanItAgDemoProject.Customer.model;
 
 import com.CleanItAg.CleanItAgDemoProject.Person.Person;
 

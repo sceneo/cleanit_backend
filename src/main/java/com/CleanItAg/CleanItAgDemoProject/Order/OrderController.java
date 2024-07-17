@@ -1,12 +1,11 @@
 package com.CleanItAg.CleanItAgDemoProject.Order;
 
-import java.security.Principal;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Dictionary;
 import java.util.List;
 import java.util.Optional;
 
+import com.CleanItAg.CleanItAgDemoProject.Order.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.CleanItAg.CleanItAgDemoProject.Employee.Employee;
-import com.CleanItAg.CleanItAgDemoProject.Employee.Employee.Role;
+import com.CleanItAg.CleanItAgDemoProject.Employee.model.Employee;
+import com.CleanItAg.CleanItAgDemoProject.Employee.model.Employee.Role;
 import com.CleanItAg.CleanItAgDemoProject.Employee.EmployeeRepository;
 import com.CleanItAg.CleanItAgDemoProject.Order.QueryService.queryKeys;
 
@@ -40,7 +39,7 @@ public class OrderController {
 	}
 
 	
-	//@PreAuthorize("hasAuthority(T(com.CleanItAg.CleanItAgDemoProject.Employee.Employee.Role).employee.toString())")... this is also not really better...
+	//@PreAuthorize("hasAuthority(T(com.CleanItAg.CleanItAgDemoProject.Employee.model.Employee.Role).employee.toString())")... this is also not really better...
 	@RequestMapping(value="/orders", method = RequestMethod.GET)
 	@PreAuthorize("hasAuthority('employee')")
 	public ResponseEntity<List<OrderBeanBasicDTO>> getOrders() {
@@ -58,14 +57,14 @@ public class OrderController {
 	
 	@RequestMapping(value="/orders/id/{orderid}", method = RequestMethod.GET)
 	public ResponseEntity<OrderBeanBasicDTO> getOrdersById(@PathVariable int orderid) {
-		Optional<OrderBean> order = orderRepository.findById(orderid);
+		Optional<OrderService> order = orderRepository.findById(orderid);
 		if (order.isEmpty()) return ResponseEntity.notFound().build();
 		return ResponseEntity.ok(new OrderBeanBasicDTO(order.get()));
 	}
 	
 	//vs GET? caching vs sensitivity of data in query string 
 	@RequestMapping(value="/orders/query", method = RequestMethod.POST)
-	public ResponseEntity<List<OrderBean>> getOrdersByQuery(@RequestBody SearchQuery searchQuery) {
+	public ResponseEntity<List<OrderService>> getOrdersByQuery(@RequestBody SearchQuery searchQuery) {
 		logger.info("Request query string: "+searchQuery);
 		Dictionary<queryKeys, Optional<String>> queryDict = queryService.parse(searchQuery);
 		logger.info("Request query dictionary: "+queryDict);
@@ -76,17 +75,17 @@ public class OrderController {
 				
 		// Check which keys are present and query database for orders.
 		if (queryDict.get(queryKeys.customerEmail).isPresent() && queryDict.get(queryKeys.customerName).isPresent()) {
-			List<OrderBean> result = orderRepository.findAllByCustomer_NameContainsAndCustomer_EmailContainsAllIgnoreCase(
+			List<OrderService> result = orderRepository.findAllByCustomer_NameContainsAndCustomer_EmailContainsAllIgnoreCase(
 					queryDict.get(queryKeys.customerName).get(), queryDict.get(queryKeys.customerEmail).get());
 			return ResponseEntity.ok(result);
 		}
 		if (queryDict.get(queryKeys.customerName).isPresent()) {
-			List<OrderBean> result = orderRepository.findAllByCustomer_NameContainsAllIgnoreCase(
+			List<OrderService> result = orderRepository.findAllByCustomer_NameContainsAllIgnoreCase(
 					queryDict.get(queryKeys.customerName).get());
 			return ResponseEntity.ok(result);
 		}
 		if (queryDict.get(queryKeys.customerEmail).isPresent()) {
-			List<OrderBean> result = orderRepository.findAllByCustomer_EmailContainsAllIgnoreCase(
+			List<OrderService> result = orderRepository.findAllByCustomer_EmailContainsAllIgnoreCase(
 					queryDict.get(queryKeys.customerEmail).get());
 			return ResponseEntity.ok(result);
 		}
@@ -100,7 +99,7 @@ public class OrderController {
 			Employee issuer = (Employee) authentication.getPrincipal();
 			logger.debug("put request by principal: "+issuer.getEmail());
 			
-			Optional<OrderBean> persistedOrder = orderRepository.findById(orderid);
+			Optional<OrderService> persistedOrder = orderRepository.findById(orderid);
 			if (persistedOrder.isEmpty())return ResponseEntity.badRequest().build();
 			
 			persistedOrder.get().changeStatus(request.getNewStatus(), issuer);

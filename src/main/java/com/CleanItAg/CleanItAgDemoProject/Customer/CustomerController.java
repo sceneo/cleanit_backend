@@ -3,6 +3,7 @@ package com.CleanItAg.CleanItAgDemoProject.Customer;
 import java.util.List;
 import java.util.Optional;
 
+import com.CleanItAg.CleanItAgDemoProject.Customer.model.Customer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

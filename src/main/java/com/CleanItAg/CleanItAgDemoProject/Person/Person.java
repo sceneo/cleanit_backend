@@ -17,7 +17,6 @@ public class Person {
 
 	public Person() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Person(int id, String name, String email, String address, String phone) {
@@ -71,8 +70,17 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + ", phone="
-				+ phone + "]";
+		return "Person [id="
+				+ id
+				+ ", name="
+				+ name
+				+ ", email="
+				+ email
+				+ ", address="
+				+ address
+				+ ", phone="
+				+ phone
+				+ "]";
 	}
 
 }

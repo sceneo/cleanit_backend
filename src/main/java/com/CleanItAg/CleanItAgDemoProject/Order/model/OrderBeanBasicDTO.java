@@ -1,12 +1,11 @@
-package com.CleanItAg.CleanItAgDemoProject.Order;
+package com.CleanItAg.CleanItAgDemoProject.Order.model;
 
 
 import java.time.LocalDateTime;
 
-import org.springframework.security.access.prepost.PreAuthorize;
-
-import com.CleanItAg.CleanItAgDemoProject.Customer.Customer;
-import com.CleanItAg.CleanItAgDemoProject.Order.Status.statusState;
+import com.CleanItAg.CleanItAgDemoProject.Customer.model.Customer;
+import com.CleanItAg.CleanItAgDemoProject.Order.OrderService;
+import com.CleanItAg.CleanItAgDemoProject.Order.model.Status.statusState;
 
 
 public class OrderBeanBasicDTO implements OrderBeanDTO {
@@ -26,7 +25,7 @@ public class OrderBeanBasicDTO implements OrderBeanDTO {
 	}
 
 
-	public OrderBeanBasicDTO(OrderBean order) {
+	public OrderBeanBasicDTO(OrderService order) {
 		super();
 		this.id = order.getId();
 		this.creationdate = order.getCreationdate();

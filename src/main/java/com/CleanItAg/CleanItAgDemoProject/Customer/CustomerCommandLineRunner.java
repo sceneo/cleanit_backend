@@ -1,6 +1,7 @@
 package com.CleanItAg.CleanItAgDemoProject.Customer;
 
 
+import com.CleanItAg.CleanItAgDemoProject.Customer.model.Customer;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
